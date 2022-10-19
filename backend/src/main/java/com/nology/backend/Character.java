@@ -1,6 +1,8 @@
 package com.nology.backend;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -8,15 +10,21 @@ import java.util.Set;
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id = new Random().nextInt();
+    private long id = new Random().nextLong();
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "weapon_id")
     private Weapon weapon;
 
+    @OneToMany(
+            mappedBy = "character",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Skill> skills = new ArrayList<>();
 
-    private Set<Skill> skills;
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "special_id")
     private Special special;
 
     private String name;

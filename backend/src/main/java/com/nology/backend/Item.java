@@ -10,7 +10,7 @@ import java.util.Random;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id = new Random().nextInt();
+    private long id = new Random().nextLong();
 
     private String name;
 

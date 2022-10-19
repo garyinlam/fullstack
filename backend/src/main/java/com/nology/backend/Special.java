@@ -7,9 +7,9 @@ import java.util.Random;
 public class Special {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id = new Random().nextInt();
+    private long id = new Random().nextLong();
 
-
+    @OneToOne(mappedBy = "character")
     private Character character;
 
     private String name;

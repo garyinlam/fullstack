@@ -1,17 +1,15 @@
 package com.nology.backend;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Random;
 
 @Entity
 public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id = new Random().nextInt();
+    private long id = new Random().nextLong();
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private Character character;
 
     private String name;
