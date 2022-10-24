@@ -103,4 +103,51 @@ public class HolocureController {
         holocureService.updateWeapon(newWeapon,id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(newWeapon);
     }
+
+
+    @PostMapping("/skill")
+    public ResponseEntity<Skill> createSkill(@RequestBody Skill skill) {
+        holocureService.addSkill(skill);
+        return ResponseEntity.status(HttpStatus.CREATED).body(skill);
+    }
+
+    @GetMapping("/skill/{id}")
+    public ResponseEntity<Skill> getSkillById(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getSkillById(id));
+    }
+
+    @GetMapping("/skills")
+    public ResponseEntity<List<Skill>> getSkills(@RequestParam long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getSkillsByPlayerId(id));
+    }
+
+    @PutMapping("/skill/{id}")
+    public ResponseEntity<Skill> updateWeapon(@RequestBody Skill newSkill, @PathVariable long id){
+        newSkill.setId(id);
+        holocureService.updateSkill(newSkill,id);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(newSkill);
+    }
+
+    @PostMapping("/special")
+    public ResponseEntity<Special> createSpecial(@RequestBody Special special) {
+        holocureService.addSpecial(special);
+        return ResponseEntity.status(HttpStatus.CREATED).body(special);
+    }
+
+    @GetMapping("/special/{id}")
+    public ResponseEntity<Special> getSpecialById(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getSpecialById(id));
+    }
+
+    @GetMapping("/special")
+    public ResponseEntity<Special> getSpecial(@RequestParam long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getSpecialByPlayerId(id));
+    }
+
+    @PutMapping("/special/{id}")
+    public ResponseEntity<Special> updateWeapon(@RequestBody Special newSpecial, @PathVariable long id){
+        newSpecial.setId(id);
+        holocureService.updateSpecial(newSpecial,id);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(newSpecial);
+    }
 }

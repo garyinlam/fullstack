@@ -1,6 +1,8 @@
 package com.nology.backend;
 
 import com.nology.backend.exceptions.PlayerNotFoundException;
+import com.nology.backend.exceptions.SkillNotFoundException;
+import com.nology.backend.exceptions.SpecialNotFoundException;
 import com.nology.backend.exceptions.WeaponNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,14 +33,6 @@ public class HolocureService {
 
     public void addPlayer(Player player){
         playerRepository.save(player);
-    }
-
-    public void addSkill(Skill skill){
-        skillRepository.save(skill);
-    }
-
-    public void addSpecial(Special special){
-        specialRepository.save(special);
     }
 
     public void addItem(Item item){
@@ -134,4 +128,59 @@ public class HolocureService {
         weaponRepository.save(newWeapon);
     }
 
+
+    public void addSkill(Skill skill){
+        skillRepository.save(skill);
+    }
+
+    public Skill getSkillById(long id){
+        Optional<Skill> skill = skillRepository.findById(id);
+        if (skill.isPresent()){
+            return skill.get();
+        } else {
+            throw new SkillNotFoundException();
+        }
+    }
+
+    public List<Skill> getSkillsByPlayerId(long id){
+        return skillRepository.getAllByPlayerId(id);
+    }
+
+    public void updateSkill (Skill newSkill, long id){
+        if(!skillRepository.existsById(id)){
+            throw new SkillNotFoundException();
+        }
+
+        newSkill.setId(id);
+
+        skillRepository.save(newSkill);
+    }
+
+
+    public void addSpecial(Special special){
+        specialRepository.save(special);
+    }
+
+    public Special getSpecialById(long id){
+        Optional<Special> special = specialRepository.findById(id);
+        if (special.isPresent()){
+            return special.get();
+        } else {
+            throw new SpecialNotFoundException();
+        }
+    }
+
+    public Special getSpecialByPlayerId(long id){
+        return specialRepository.getFirstByPlayerId(id);
+    }
+
+    public void updateSpecial (Special newSpecial, long id){
+        if(!specialRepository.existsById(id)){
+            throw new SpecialNotFoundException();
+        }
+
+        newSpecial.setId(id);
+
+        specialRepository.save(newSpecial);
+    }
 }
