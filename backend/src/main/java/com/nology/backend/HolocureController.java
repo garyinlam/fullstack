@@ -21,10 +21,7 @@ public class HolocureController {
 
 
     @GetMapping("/characters")
-    public ResponseEntity<List<Player>> getPlayers(@RequestParam(required = false) String generation, @RequestParam(required = false) String name, @RequestParam(defaultValue = "10") int limit){
-        if (name != null){
-            return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayersByName(name));
-        }
+    public ResponseEntity<List<Player>> getPlayers(@RequestParam(required = false) String generation, @RequestParam(defaultValue = "10") int limit){
         if(generation != null){
             return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayersByGeneration(generation));
         }
@@ -44,6 +41,11 @@ public class HolocureController {
     @GetMapping("/character/{id}")
     public ResponseEntity<Player> getPlayerById(@PathVariable long id){
         return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayerById(id));
+    }
+
+    @GetMapping("/character")
+    public ResponseEntity<Player> getPlayer(@RequestParam String name){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayerByName(name));
     }
 
 

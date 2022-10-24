@@ -56,11 +56,11 @@ public class HolocureService {
     }
 
     public List<Player> getPlayersByGeneration(String generation){
-        return playerRepository.getAllByGeneration(generation);
+        return playerRepository.getAllByGenerationIgnoreCase(generation);
     }
 
-    public List<Player> getPlayersByName(String name){
-        return playerRepository.getAllByName(name);
+    public Player getPlayerByName(String name){
+        return playerRepository.getFirstByNameIgnoreCase(name);
     }
 
     public List<Player> getAllPlayers(int limit){
