@@ -7,7 +7,7 @@ const Links = () => {
     <div className='links'>
       <ul className='links__list'>
         <Link to="/"><p className='links__item'>Home</p></Link>
-        <Link to=""><p className='links__item'>Characters</p></Link>
+        <Link to="/characters"><p className='links__item'>Characters</p></Link>
         <Link to=""><p className='links__item'>Weapons</p></Link>
         <Link to=""><p className='links__item'>Items</p></Link>
       </ul>

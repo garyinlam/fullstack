@@ -32,8 +32,6 @@ public class Player {
 
     private String generation;
 
-    private String description;
-
     private int hp;
 
     private double attack;
@@ -47,7 +45,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(long id, Weapon weapon, List<Skill> skills, Special special, String name, String imageUrl, String generation, String description, int hp, double attack, double speed, int critical, boolean flat) {
+    public Player(long id, Weapon weapon, List<Skill> skills, Special special, String name, String imageUrl, String generation, int hp, double attack, double speed, int critical, boolean flat) {
         this.id = id;
         this.weapon = weapon;
         this.skills = skills;
@@ -55,7 +53,6 @@ public class Player {
         this.name = name;
         this.imageUrl = imageUrl;
         this.generation = generation;
-        this.description = description;
         this.hp = hp;
         this.attack = attack;
         this.speed = speed;
@@ -117,14 +114,6 @@ public class Player {
 
     public void setGeneration(String generation) {
         this.generation = generation;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getHp() {
