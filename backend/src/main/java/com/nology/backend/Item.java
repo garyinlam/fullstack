@@ -15,4 +15,12 @@ public class Item {
     private String name;
 
     private String imageUrl;
+
+    private int maxLevel;
+
+    private int weight;
+
+    private String description;
+
+    private String levels;
 }
