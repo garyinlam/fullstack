@@ -1,5 +1,7 @@
 package com.nology.backend;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Random;
 
@@ -9,8 +11,9 @@ public class Weapon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = new Random().nextLong();
 
+    @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "player_id", referencedColumnName = "id")
     private Player player;
 
     private String name;
@@ -43,6 +46,8 @@ public class Weapon {
 
     private String knockbackSpeed;
 
+    private long component1;
+    private long component2;
 
     private int hitRange;
 
@@ -59,7 +64,7 @@ public class Weapon {
     public Weapon() {
     }
 
-    public Weapon(long id, Player player, String name, String imageUrl, String description, String weaponType, String damage, String attackTime, String attackCount, String attackDelay, String hitLimit, String hitCooldown, String area, String duration, String projectileSpeed, String knockbackDuration, String knockbackSpeed, int hitRange, String notes, String level1, String level2, String level3, String level4, String level5, String level6, String levelAwakened) {
+    public Weapon(long id, Player player, String name, String imageUrl, String description, String weaponType, String damage, String attackTime, String attackCount, String attackDelay, String hitLimit, String hitCooldown, String area, String duration, String projectileSpeed, String knockbackDuration, String knockbackSpeed, long component1, long component2, int hitRange, String notes, String level1, String level2, String level3, String level4, String level5, String level6, String levelAwakened) {
         this.id = id;
         this.player = player;
         this.name = name;
@@ -77,6 +82,8 @@ public class Weapon {
         this.projectileSpeed = projectileSpeed;
         this.knockbackDuration = knockbackDuration;
         this.knockbackSpeed = knockbackSpeed;
+        this.component1 = component1;
+        this.component2 = component2;
         this.hitRange = hitRange;
         this.notes = notes;
         this.level1 = level1;
@@ -294,5 +301,21 @@ public class Weapon {
 
     public void setLevelAwakened(String levelAwakened) {
         this.levelAwakened = levelAwakened;
+    }
+
+    public long getComponent1() {
+        return component1;
+    }
+
+    public void setComponent1(long component1) {
+        this.component1 = component1;
+    }
+
+    public long getComponent2() {
+        return component2;
+    }
+
+    public void setComponent2(long component2) {
+        this.component2 = component2;
     }
 }

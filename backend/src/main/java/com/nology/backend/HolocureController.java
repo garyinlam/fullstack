@@ -14,6 +14,11 @@ public class HolocureController {
     @Autowired
     HolocureService holocureService;
 
+    @ExceptionHandler
+    public ResponseEntity<String> handleExceptions(RuntimeException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
     @PostMapping("/character")
     public ResponseEntity<Player> createPlayer(@RequestBody Player player) {
         holocureService.addPlayer(player);
@@ -55,5 +60,47 @@ public class HolocureController {
         newPlayer.setId(id);
         holocureService.updatePlayer(newPlayer,id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(newPlayer);
+    }
+
+
+
+    @PostMapping("/weapon")
+    public ResponseEntity<Weapon> createWeapon(@RequestBody Weapon weapon) {
+        holocureService.addWeapon(weapon);
+        return ResponseEntity.status(HttpStatus.CREATED).body(weapon);
+    }
+
+    @GetMapping("/weapons")
+    public ResponseEntity<List<Weapon>> getWeapons(@RequestParam(required = false) String type, @RequestParam(defaultValue = "10") int limit){
+        if(type != null){
+            return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponsByType(type));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getAllWeapons(limit));
+    }
+
+    @GetMapping("/weapons/types")
+    public ResponseEntity<List<String>> getWeaponTypes(){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponTypes());
+    }
+    @GetMapping("/weapons/count")
+    public ResponseEntity<Long> getWeaponCount(){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getNumberOfWeapons());
+    }
+
+    @GetMapping("/weapon/{id}")
+    public ResponseEntity<Weapon> getWeaponById(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponById(id));
+    }
+
+    @GetMapping("/weapon")
+    public ResponseEntity<Weapon> getWeapon(@RequestParam long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponByPlayerId(id));
+    }
+
+    @PutMapping("/weapon/{id}")
+    public ResponseEntity<Weapon> updateWeapon(@RequestBody Weapon newWeapon, @PathVariable long id){
+        newWeapon.setId(id);
+        holocureService.updateWeapon(newWeapon,id);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(newWeapon);
     }
 }

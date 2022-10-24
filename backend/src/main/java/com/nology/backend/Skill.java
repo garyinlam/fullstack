@@ -1,5 +1,7 @@
 package com.nology.backend;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Random;
 
@@ -9,6 +11,7 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = new Random().nextLong();
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Player player;
 

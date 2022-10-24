@@ -1,5 +1,7 @@
 package com.nology.backend;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Random;
 
@@ -9,8 +11,9 @@ public class Special {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = new Random().nextLong();
 
+    @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "player_id", referencedColumnName = "id")
     private Player player;
 
     private String name;

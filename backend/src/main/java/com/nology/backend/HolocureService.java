@@ -1,6 +1,7 @@
 package com.nology.backend;
 
 import com.nology.backend.exceptions.PlayerNotFoundException;
+import com.nology.backend.exceptions.WeaponNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,9 @@ public class HolocureService {
     @Autowired
     WeaponRepository weaponRepository;
 
+    @Autowired
+    ItemRepository itemRepository;
+
 
     public void addPlayer(Player player){
         playerRepository.save(player);
@@ -37,8 +41,8 @@ public class HolocureService {
         specialRepository.save(special);
     }
 
-    public void addWeapon(Weapon weapon){
-        weaponRepository.save(weapon);
+    public void addItem(Item item){
+        itemRepository.save(item);
     }
 
 
@@ -74,7 +78,6 @@ public class HolocureService {
         return playerRepository.count();
     }
 
-
     public void updatePlayer (Player newPlayer, long id){
         if(!playerRepository.existsById(id)){
             throw new PlayerNotFoundException();
@@ -83,6 +86,52 @@ public class HolocureService {
         newPlayer.setId(id);
 
         playerRepository.save(newPlayer);
+    }
+
+    public void addWeapon(Weapon weapon){
+        weaponRepository.save(weapon);
+    }
+
+    public Weapon getWeaponById(long id){
+        Optional<Weapon> weapon = weaponRepository.findById(id);
+        if (weapon.isPresent()){
+            return weapon.get();
+        } else {
+            throw new WeaponNotFoundException();
+        }
+    }
+
+    public Weapon getWeaponByPlayerId(long id){
+        return weaponRepository.getFirstByPlayerId(id);
+    }
+
+    public List<String> getWeaponTypes(){
+        return weaponRepository.getDistinctWeaponTypes();
+    }
+
+    public List<Weapon> getWeaponsByType(String type) {
+        return weaponRepository.getAllByWeaponTypeIgnoreCase(type);
+    }
+
+    public List<Weapon> getAllWeapons(int limit){
+        return weaponRepository.findAll()
+                .stream()
+                .limit(limit)
+                .collect(Collectors.toList());
+    }
+
+    public long getNumberOfWeapons(){
+        return weaponRepository.count();
+    }
+
+    public void updateWeapon (Weapon newWeapon, long id){
+        if(!weaponRepository.existsById(id)){
+            throw new WeaponNotFoundException();
+        }
+
+        newWeapon.setId(id);
+
+        weaponRepository.save(newWeapon);
     }
 
 }
