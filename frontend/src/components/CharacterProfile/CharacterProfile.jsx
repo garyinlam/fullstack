@@ -6,7 +6,7 @@ const CharacterProfile = (props) => {
   const {
     name,
     imageUrl,
-    group,
+    generation,
     hp,
     attack,
     speed,
@@ -17,7 +17,7 @@ const CharacterProfile = (props) => {
     <div className='char-profile'>
       <h2 className='char-profile__title'>{name}</h2>
       <img src={imageUrl} alt={name} className='char-profile__image'/>
-      <p className='char-profile__text'>Group: {group}</p>
+      <p className='char-profile__text'>Group: {generation}</p>
       <div className='char-profile__stats'>
         <h4>Base Stats</h4>
         <p className='char-profile__text'>HP: {hp}</p>
