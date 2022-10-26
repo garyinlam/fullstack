@@ -49,6 +49,15 @@ public class HolocureService {
         }
     }
 
+    public String getPlayerNameById(long id){
+        Optional<Player> player = playerRepository.findById(id);
+        if (player.isPresent()){
+            return player.get().getName();
+        } else {
+            throw new PlayerNotFoundException();
+        }
+    }
+
     public List<String> getGenerations(){
         return playerRepository.getDistinctGenerations();
     }

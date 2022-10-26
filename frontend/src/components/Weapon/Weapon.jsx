@@ -6,6 +6,7 @@ import "./Weapon.scss"
 const Weapon = () => {
   const [ weapon, setWeapon] = useState({});
   const [ playerId, setPlayerId] = useState(0);
+  const [ playerName, setPlayerName] = useState("");
   const { weaponId } = useParams();
 
   const {
@@ -25,11 +26,25 @@ const Weapon = () => {
       setPlayerId(data2)
     } catch (error) {
     }
+    
+  }
+
+  const getPlayerName = async () => {
+    if(playerId != 0 ){
+      const res = await fetch(`http://localhost:8080/character/${playerId}/name`)
+      const data = await res.text()
+      setPlayerName(data)
+    }
   }
 
   useEffect(() => {
     getWeapon();
   }, [])
+
+  useEffect(() => {
+    getPlayerName()
+  }, [playerId])
+  
   
 
   return (
@@ -39,7 +54,7 @@ const Weapon = () => {
       {playerId != 0 && (
         <>
           <p className='weapon__text'>Used By:</p>
-          <Link to={`/characters/${playerId}`}><p className='weapon__text link'>{playerId}</p></Link>
+          <Link to={`/characters/${playerId}`}><p className='weapon__text link'>{playerName}</p></Link>
         </>
       )}
     </div>

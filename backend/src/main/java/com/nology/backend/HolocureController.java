@@ -49,6 +49,11 @@ public class HolocureController {
         return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayerById(id));
     }
 
+    @GetMapping("/character/{id}/name")
+    public ResponseEntity<String> getPlayerNameById(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayerNameById(id));
+    }
+
     @GetMapping("/character")
     public ResponseEntity<Player> getPlayer(@RequestParam String name){
         return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayerByName(name));
@@ -61,7 +66,6 @@ public class HolocureController {
         holocureService.updatePlayer(newPlayer,id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(newPlayer);
     }
-
 
 
     @PostMapping("/weapon")

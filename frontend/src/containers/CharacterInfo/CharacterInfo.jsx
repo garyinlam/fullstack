@@ -13,7 +13,6 @@ const CharacterInfo = () => {
     const res = await fetch(`http://localhost:8080/character/${characterId}`)
     const data = await res.json();
     setChar(data);
-    console.log(data);
   }
 
   useEffect(() => {
