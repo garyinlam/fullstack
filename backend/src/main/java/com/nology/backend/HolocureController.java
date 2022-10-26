@@ -92,6 +92,11 @@ public class HolocureController {
         return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponById(id));
     }
 
+    @GetMapping("/weapon/{id}/character")
+    public ResponseEntity<Long> getCharacterByWeaponId(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getPlayerIdByWeaponId(id));
+    }
+
     @GetMapping("/weapon")
     public ResponseEntity<Weapon> getWeapon(@RequestParam long id){
         return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponByPlayerId(id));

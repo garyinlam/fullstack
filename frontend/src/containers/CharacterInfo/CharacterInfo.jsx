@@ -29,7 +29,7 @@ const CharacterInfo = () => {
     <div className='character-info'>
       <CharacterProfile data={char}/>
       <p>Weapon:</p>
-      <Link to={`/weapons/${char.weapon.id}`}><p className='character-info__weapon link'>{char.weapon.name}</p></Link>
+      <Link to={`/weapons/${char.weapon?.id}`}><p className='character-info__weapon link'>{char.weapon?.name}</p></Link>
       <h3 className='character-info__subtitle'>Special</h3>
       <Special data={char.special}/>
       <h3 className='character-info__subtitle'>Skills</h3>

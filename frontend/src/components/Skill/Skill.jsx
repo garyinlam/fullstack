@@ -10,7 +10,7 @@ const Skill = (props) => {
     level2,
     level3,
     notes
-  } = data
+  } = data ?? {}
   return (
     <div className='skill'>
       <h4 className='sill_title'>{name}</h4>

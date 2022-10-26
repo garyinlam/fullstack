@@ -8,7 +8,7 @@ const Special = (props) => {
     cooldown,
     imageUrl,
     description
-  } = data;
+  } = data ?? {};
   return (
     <div className='special'>
       <h4 className='special__title'>{name}</h4>

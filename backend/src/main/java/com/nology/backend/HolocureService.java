@@ -99,6 +99,10 @@ public class HolocureService {
         return weaponRepository.getFirstByPlayerId(id);
     }
 
+    public long getPlayerIdByWeaponId(long id){
+        return weaponRepository.getPlayerIdById(id);
+    }
+
     public List<String> getWeaponTypes(){
         return weaponRepository.getDistinctWeaponTypes();
     }
