@@ -20,6 +20,7 @@ public class Weapon {
 
     private String imageUrl;
 
+    @Lob
     private String description;
 
     private String weaponType;
@@ -51,14 +52,22 @@ public class Weapon {
 
     private int hitRange;
 
+    @Lob
     private String notes;
 
+    @Lob
     private String level1;
+    @Lob
     private String level2;
+    @Lob
     private String level3;
+    @Lob
     private String level4;
+    @Lob
     private String level5;
+    @Lob
     private String level6;
+    @Lob
     private String levelAwakened;
 
     public Weapon() {

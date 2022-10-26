@@ -19,10 +19,14 @@ public class Skill {
 
     private String imageUrl;
 
+    @Lob
     private String level1;
+    @Lob
     private String level2;
+    @Lob
     private String level3;
 
+    @Lob
     private String notes;
 
 

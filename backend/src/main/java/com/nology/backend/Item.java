@@ -1,9 +1,6 @@
 package com.nology.backend;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Random;
 
 @Entity
@@ -20,7 +17,18 @@ public class Item {
 
     private int weight;
 
+    @Lob
     private String description;
 
+    @Lob
     private String levels;
+
+    @Lob
+    private String superLevel;
+
+    @Lob
+    private String behaviour;
+
+    @Lob
+    private String notes;
 }

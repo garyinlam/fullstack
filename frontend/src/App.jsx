@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Home from './containers/Home/Home';
 import Footer from './components/Footer/Footer';
 import Characters from './containers/Characters/Characters';
+import CharacterInfo from './containers/CharacterInfo/CharacterInfo';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/characters' element={<Characters />}/>
-          <Route path='/characters/:characterId'/>
+          <Route path='/characters/:characterId' element={<CharacterInfo />}/>
 
           <Route path="/" element={<Home />} />
         </Routes>

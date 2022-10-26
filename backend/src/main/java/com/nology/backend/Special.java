@@ -22,6 +22,7 @@ public class Special {
 
     private int cooldown;
 
+    @Lob
     private String description;
 
     public Special() {
