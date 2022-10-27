@@ -6,7 +6,7 @@ import "./CardContainer.scss"
 const CardContainer = (props) => {
   const { cardArray, type } = props;
 
-  const link = type == 0 ? "/characters/" : type == 1 ? "/weapons/" : "/items/";
+  const link = "/"+type+"/"
 
   const cardsJSX = cardArray?.map((card, index) => {
     const {id, title, image, description} = card;
@@ -17,7 +17,7 @@ const CardContainer = (props) => {
         title={title}
         image={image}
         description={description}
-        hasDescription={type != 2 ? true : false}
+        hasDescription={type !== "items" ? true : false} 
       />
     </Link>)
   })

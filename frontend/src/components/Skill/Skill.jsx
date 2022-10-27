@@ -1,4 +1,5 @@
 import React from 'react'
+import Levels from '../Levels/Levels'
 import "./Skill.scss"
 
 const Skill = (props) => {
@@ -21,12 +22,7 @@ const Skill = (props) => {
       <h4 className='sill_title'>{name}</h4>
       <img src={imageUrl} alt={name} className="skill__image" />
       <div className='skill__levels'>
-        <p className='skill__level--label'>Level 1</p>
-        <p className='skill__level--desc'>{level1}</p>
-        <p className='skill__level--label'>Level 2</p>
-        <p className='skill__level--desc'>{level2}</p>
-        <p className='skill__level--label'>Level 3</p>
-        <p className='skill__level--desc'>{level3}</p>
+        <Levels data={[level1,level2,level3]} />
       </div>
       <ul className='skill__notes'>{notesJSX}</ul>
     </div>

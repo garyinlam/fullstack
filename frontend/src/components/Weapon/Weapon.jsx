@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import Levels from '../Levels/Levels';
+import WeaponStats from '../WeaponStats/WeaponStats';
 import "./Weapon.scss"
 
 
@@ -26,7 +28,7 @@ const Weapon = () => {
     duration,
     projectileSpeed,
     knockbackDuration,
-    knockbakcSpeed,
+    knockbackSpeed,
     component1,
     component2,
     hitRange,
@@ -51,19 +53,19 @@ const Weapon = () => {
     duration: duration,
     projectileSpeed: projectileSpeed,
     knockbackDuration: knockbackDuration,
-    knockbakcSpeed: knockbakcSpeed,
+    knockbackSpeed: knockbackSpeed,
     hitRange: hitRange
   }
 
-  const levels = {
-    level1: level1,
-    level2: level2,
-    level3: level3,
-    level4: level4,
-    level5: level5,
-    level6: level6,
-    levelAwakened: levelAwakened
-  }
+  const levels = [
+    level1,
+    level2,
+    level3,
+    level4,
+    level5,
+    level6,
+    levelAwakened
+  ]
 
   const getWeapon = async () => {
     const res = await fetch(`http://localhost:8080/weapon/${weaponId}`)
@@ -79,7 +81,7 @@ const Weapon = () => {
   }
 
   const getPlayerName = async () => {
-    if(playerId != 0 ){
+    if(playerId !== 0 ){
       const res = await fetch(`http://localhost:8080/character/${playerId}/name`)
       const data = await res.text()
       setPlayerName(data)
@@ -126,12 +128,15 @@ const Weapon = () => {
         </>
       )}
       <p className='weapon__text'>{description}</p>
-      {playerId != 0 && (
+      {playerId !== 0 && (
         <>
           <p className='weapon__text'>Used By:</p>
           <Link to={`/characters/${playerId}`}><p className='weapon__text link'>{playerName}</p></Link>
         </>
       )}
+      <WeaponStats data={stats} />
+      {(!weaponType?.includes("Collab")) && <Levels data={levels} type={weaponType} />}
+      <p className='weapon__text'>{notes}</p>
     </div>
   )
 }

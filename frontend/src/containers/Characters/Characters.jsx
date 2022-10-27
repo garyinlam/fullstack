@@ -30,7 +30,7 @@ const Characters = () => {
 
   return (
     <div className='characters'>
-      <CardContainer type={0} cardArray={characters}/>
+      <CardContainer type={"characters"} cardArray={characters}/>
     </div>
   )
 }

@@ -31,7 +31,7 @@ const Weapons = () => {
 
   return (
     <div className='weapons'>
-      <CardContainer type={1} cardArray={weapons}/>
+      <CardContainer type={"weapons"} cardArray={weapons}/>
     </div>
   )
 }
