@@ -137,7 +137,7 @@ public class HolocureController {
     }
 
     @PutMapping("/skill/{id}")
-    public ResponseEntity<Skill> updateWeapon(@RequestBody Skill newSkill, @PathVariable long id){
+    public ResponseEntity<Skill> updateSkill(@RequestBody Skill newSkill, @PathVariable long id){
         newSkill.setId(id);
         holocureService.updateSkill(newSkill,id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(newSkill);
@@ -160,7 +160,7 @@ public class HolocureController {
     }
 
     @PutMapping("/special/{id}")
-    public ResponseEntity<Special> updateWeapon(@RequestBody Special newSpecial, @PathVariable long id){
+    public ResponseEntity<Special> updateSpecial(@RequestBody Special newSpecial, @PathVariable long id){
         newSpecial.setId(id);
         holocureService.updateSpecial(newSpecial,id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(newSpecial);
