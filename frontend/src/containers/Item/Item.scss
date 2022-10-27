@@ -1,0 +1,28 @@
+.item{
+  
+  &__buttons{
+    text-align: right;
+    margin-right: 20px;
+  }
+
+  &__button{
+    margin: 10px;
+  }
+
+  &__body{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  
+  &__left{
+    padding: 50px;
+    & > * {
+      margin-bottom: 20px;
+    }
+  }
+  &__right{
+    margin-top: 50px;
+    padding: 50px;
+  }
+}

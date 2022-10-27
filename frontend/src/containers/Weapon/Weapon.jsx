@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Levels from '../Levels/Levels';
-import Notes from '../Notes/Notes';
-import WeaponStats from '../WeaponStats/WeaponStats';
+import Levels from '../../components/Levels/Levels';
+import Notes from '../../components/Notes/Notes';
+import WeaponStats from '../../components/WeaponStats/WeaponStats';
 import "./Weapon.scss"
 
 

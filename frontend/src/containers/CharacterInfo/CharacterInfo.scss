@@ -1,7 +1,7 @@
 .character-info{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  min-height: 80vh;
+
 
   &__left{
     padding: 50px;

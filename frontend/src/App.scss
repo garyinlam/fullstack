@@ -1,1 +1,8 @@
 @use "./assets/sass/base";
+@use "./assets/sass/variables" as *;
+
+
+.content{
+  min-height: 80vh;
+  background-color: $colour-background;
+}
