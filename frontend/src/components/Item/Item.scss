@@ -1,0 +1,17 @@
+.item{
+  min-height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  
+  &__left{
+    padding: 50px;
+    & > * {
+      margin-bottom: 20px;
+    }
+  }
+  &__right{
+    margin-top: 50px;
+    padding: 50px;
+  }
+}

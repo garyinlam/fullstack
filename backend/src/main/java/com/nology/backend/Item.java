@@ -27,15 +27,12 @@ public class Item {
     private String superLevel;
 
     @Lob
-    private String behaviour;
-
-    @Lob
     private String notes;
 
     public Item() {
     }
 
-    public Item(long id, String name, String imageUrl, int maxLevel, int weight, String description, String levels, String superLevel, String behaviour, String notes) {
+    public Item(long id, String name, String imageUrl, int maxLevel, int weight, String description, String levels, String superLevel, String notes) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
@@ -44,7 +41,6 @@ public class Item {
         this.description = description;
         this.levels = levels;
         this.superLevel = superLevel;
-        this.behaviour = behaviour;
         this.notes = notes;
     }
 
@@ -110,14 +106,6 @@ public class Item {
 
     public void setSuperLevel(String superLevel) {
         this.superLevel = superLevel;
-    }
-
-    public String getBehaviour() {
-        return behaviour;
-    }
-
-    public void setBehaviour(String behaviour) {
-        this.behaviour = behaviour;
     }
 
     public String getNotes() {

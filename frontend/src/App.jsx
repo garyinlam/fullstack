@@ -8,6 +8,7 @@ import CharacterInfo from './containers/CharacterInfo/CharacterInfo';
 import Weapons from './containers/Weapons/Weapons';
 import Weapon from './components/Weapon/Weapon';
 import Items from './containers/Items/Items';
+import Item from './components/Item/Item';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path='/weapons/:weaponId' element={<Weapon/>}/>
 
           <Route path='/items' element={<Items />}/>
-          <Route path='/items/:itemId' element={<Weapon/>}/>
+          <Route path='/items/:itemId' element={<Item/>}/>
 
           <Route path="/" element={<Home />} />
         </Routes>

@@ -14,7 +14,7 @@ const Levels = (props) => {
 
   return (
     <div className='levels'>
-      <h3 className='levels__title'>Levels</h3>
+      <h3 className='levels__title'>Upgrades</h3>
       {dataJSX}
     </div>
   )
