@@ -29,7 +29,7 @@ const Characters = () => {
   },[]);
 
   return (
-    <div>
+    <div className='characters'>
       <CardContainer type={0} cardArray={characters}/>
     </div>
   )

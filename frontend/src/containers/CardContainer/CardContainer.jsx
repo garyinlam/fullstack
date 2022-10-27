@@ -17,7 +17,7 @@ const CardContainer = (props) => {
         title={title}
         image={image}
         description={description}
-        isCharacter={type == 0 ? true : false}
+        hasDescription={type != 2 ? true : false}
       />
     </Link>)
   })

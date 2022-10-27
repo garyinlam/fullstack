@@ -1,9 +1,6 @@
 package com.nology.backend;
 
-import com.nology.backend.exceptions.PlayerNotFoundException;
-import com.nology.backend.exceptions.SkillNotFoundException;
-import com.nology.backend.exceptions.SpecialNotFoundException;
-import com.nology.backend.exceptions.WeaponNotFoundException;
+import com.nology.backend.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,11 +31,6 @@ public class HolocureService {
     public void addPlayer(Player player){
         playerRepository.save(player);
     }
-
-    public void addItem(Item item){
-        itemRepository.save(item);
-    }
-
 
     public Player getPlayerById(long id){
         Optional<Player> player = playerRepository.findById(id);
@@ -106,6 +98,15 @@ public class HolocureService {
 
     public Weapon getWeaponByPlayerId(long id){
         return weaponRepository.getFirstByPlayerId(id);
+    }
+
+    public String getWeaponNameById(long id){
+        Optional<Weapon> weapon = weaponRepository.findById(id);
+        if (weapon.isPresent()){
+            return weapon.get().getName();
+        } else {
+            throw new WeaponNotFoundException();
+        }
     }
 
     public long getPlayerIdByWeaponId(long id){
@@ -196,4 +197,47 @@ public class HolocureService {
 
         specialRepository.save(newSpecial);
     }
+
+    public void addItem(Item item){
+        itemRepository.save(item);
+    }
+
+    public List<Item> getAllItems(int limit){
+        return itemRepository.findAll()
+                .stream()
+                .limit(limit)
+                .collect(Collectors.toList());
+    }
+
+    public long getNumberOfItems(){
+        return itemRepository.count();
+    }
+    public Item getItemById(long id){
+        Optional<Item> item = itemRepository.findById(id);
+        if (item.isPresent()){
+            return item.get();
+        } else {
+            throw new ItemNotFoundException();
+        }
+    }
+
+    public void updateItem (Item newItem, long id){
+        if(!itemRepository.existsById(id)){
+            throw new ItemNotFoundException();
+        }
+
+        newItem.setId(id);
+
+        itemRepository.save(newItem);
+    }
+
+    @Transactional
+    public void deleteItemById(long id) {
+        if (!itemRepository.existsById(id)) {
+            throw new ItemNotFoundException();
+        }
+
+        itemRepository.deleteItemById(id);
+    }
+
 }

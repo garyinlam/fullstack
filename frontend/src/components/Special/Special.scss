@@ -1,0 +1,11 @@
+.special{
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
+
+  &__image{
+    grid-area: 1 / 1 / 4 / 2;
+    height: 150px;
+    margin-right: 10px;
+  }
+}

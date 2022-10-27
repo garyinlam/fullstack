@@ -11,6 +11,11 @@ const Skill = (props) => {
     level3,
     notes
   } = data ?? {}
+
+  const notesJSX = notes?.split("|")?.map((note) => (
+    <li>{note}</li>
+  ))
+
   return (
     <div className='skill'>
       <h4 className='sill_title'>{name}</h4>
@@ -23,7 +28,7 @@ const Skill = (props) => {
         <p className='skill__level--label'>Level 3</p>
         <p className='skill__level--desc'>{level3}</p>
       </div>
-      <p className='skill__notes'>{notes}</p>
+      <ul className='skill__notes'>{notesJSX}</ul>
     </div>
   )
 }

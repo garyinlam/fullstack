@@ -1,0 +1,16 @@
+.char-profile{
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
+  &__title{
+    padding-bottom: 10px;
+  }
+
+  &__image{
+    padding: 10px 0;
+  }
+  &__stats{
+    padding-top: 50px;
+    grid-area: 1 / 2 / 4 / 3;
+  }
+}

@@ -10,3 +10,13 @@ a, a:visited {
   text-decoration: none;
   color: black;
 }
+
+.link {
+  color: $colour-secondary;
+  text-decoration: underline;
+}
+
+.line{
+  border: 1px solid $colour-primary;
+  margin: 10px 0;
+}

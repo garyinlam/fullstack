@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -106,6 +107,11 @@ public class HolocureController {
         return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponByPlayerId(id));
     }
 
+    @GetMapping("/weapon/{id}/name")
+    public ResponseEntity<String> getWeaponNameById(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getWeaponNameById(id));
+    }
+
     @PutMapping("/weapon/{id}")
     public ResponseEntity<Weapon> updateWeapon(@RequestBody Weapon newWeapon, @PathVariable long id){
         newWeapon.setId(id);
@@ -158,5 +164,39 @@ public class HolocureController {
         newSpecial.setId(id);
         holocureService.updateSpecial(newSpecial,id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(newSpecial);
+    }
+
+    @PostMapping("/item")
+    public ResponseEntity<Item> createItem(@RequestBody Item item) {
+        holocureService.addItem(item);
+        return ResponseEntity.status(HttpStatus.CREATED).body(item);
+    }
+
+    @GetMapping("/items")
+    public ResponseEntity<List<Item>> getItems(@RequestParam(defaultValue = "10") int limit){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getAllItems(limit));
+    }
+    @GetMapping("/item/{id}")
+    public ResponseEntity<Item> getItemById(@PathVariable long id){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getItemById(id));
+    }
+
+    @GetMapping("/items/count")
+    public ResponseEntity<Long> getItemCount(){
+        return ResponseEntity.status(HttpStatus.OK).body(holocureService.getNumberOfItems());
+    }
+
+    @PutMapping("/item/{id}")
+    public ResponseEntity<Item> updateItem(@RequestBody Item newItem, @PathVariable long id){
+        newItem.setId(id);
+        holocureService.updateItem(newItem,id);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(newItem);
+    }
+
+    @DeleteMapping("/item/{id}")
+    @Transactional
+    public ResponseEntity<Void> deleteItemById(@PathVariable long id) {
+        holocureService.deleteItemById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

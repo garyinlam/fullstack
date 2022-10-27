@@ -1,0 +1,8 @@
+@use "../../assets/sass/variables" as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $colour-primary;
+}

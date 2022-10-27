@@ -26,13 +26,19 @@ const CharacterInfo = () => {
 
   return (
     <div className='character-info'>
-      <CharacterProfile data={char}/>
-      <p>Weapon:</p>
-      <Link to={`/weapons/${char.weapon?.id}`}><p className='character-info__weapon link'>{char.weapon?.name}</p></Link>
-      <h3 className='character-info__subtitle'>Special</h3>
-      <Special data={char.special}/>
-      <h3 className='character-info__subtitle'>Skills</h3>
-      {skillsJSX}
+      <div className='character-info__left'>
+        <CharacterProfile data={char}/>
+        <div className='line'/>
+        <p className='character-info__text'>Weapon:</p>
+        <Link to={`/weapons/${char.weapon?.id}`}><p className='character-info__weapon link'>{char.weapon?.name}</p></Link>
+        <div className='line'/>
+        <h3 className='character-info__subtitle'>Special</h3>
+        <Special data={char.special}/>
+      </div>
+      <div className='character-info__right'>
+        <h3 className='character-info__subtitle'>Skills</h3>
+        {skillsJSX}
+      </div>
     </div>
   )
 }

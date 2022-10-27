@@ -1,0 +1,20 @@
+.character-info{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  &__left{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  &__right{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__subtitle{
+    margin: 20px 0;
+  }
+}
