@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import CardContainer from '../CardContainer/CardContainer';
 import "./Items.scss"
 
@@ -29,6 +30,9 @@ const Items = () => {
 
   return (
     <div className='items'>
+      <nav className='items__nav'>
+        <button className='items__button'><Link to="/additem">Add Item</Link></button>
+      </nav>
       <CardContainer type={"items"} cardArray={items}/>
     </div>
   )

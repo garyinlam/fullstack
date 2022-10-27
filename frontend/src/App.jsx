@@ -9,6 +9,8 @@ import Weapons from './containers/Weapons/Weapons';
 import Weapon from './components/Weapon/Weapon';
 import Items from './containers/Items/Items';
 import Item from './components/Item/Item';
+import AddItem from './containers/AddItem/AddItem';
+import UpdateItem from './containers/UpdateItem/UpdateItem';
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
 
           <Route path='/items' element={<Items />}/>
           <Route path='/items/:itemId' element={<Item/>}/>
+          <Route path='/items/:itemId/edit' element={<UpdateItem/>}/>
+          <Route path='/additem' element={<AddItem />}/>
+
 
           <Route path="/" element={<Home />} />
         </Routes>

@@ -1,0 +1,13 @@
+.item-form{
+  &__form{
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+  }
+  &__label{
+    margin-top: 10px;
+  }
+  &__button{
+    margin-top: 10px;
+  }
+}

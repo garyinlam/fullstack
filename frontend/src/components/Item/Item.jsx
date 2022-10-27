@@ -32,6 +32,10 @@ const Item = () => {
     navigate("/");
   };
 
+  const handleEdit = () => {
+    navigate("edit")
+  }
+
   useEffect(() => {
     getItem();
   }, [])
@@ -51,7 +55,7 @@ const Item = () => {
         {superLevel && <Level label="Super" text={superLevel}/>}
       </div>
       <div className='item__buttons'>
-        <button className='item__button item__button--update'>Update</button>
+        <button className='item__button item__button--update' onClick={handleEdit}>Update</button>
         <button className='item__button item__button--delete' onClick={handleDeleteItem}>Delete</button>
       </div>
       

@@ -8,10 +8,13 @@ const Notes = (props) => {
   ))
   return (
     <div className='notes'>
-      <h3 className='notes__title'>Notes</h3>
-      <ul className='notes__list'>
-        {dataJSX}
-      </ul>
+      {data!=="" &&
+      <>
+        <h3 className='notes__title'>Notes</h3>
+        <ul className='notes__list'>
+          {dataJSX}
+        </ul>
+      </>}
     </div>
   )
 }
