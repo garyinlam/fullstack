@@ -25,16 +25,20 @@ public class Special {
     @Lob
     private String description;
 
+    @Lob
+    private String notes;
+
     public Special() {
     }
 
-    public Special(long id, Player player, String name, String imageUrl, int cooldown, String description) {
+    public Special(long id, Player player, String name, String imageUrl, int cooldown, String description, String notes) {
         this.id = id;
         this.player = player;
         this.name = name;
         this.imageUrl = imageUrl;
         this.cooldown = cooldown;
         this.description = description;
+        this.notes = notes;
     }
 
     public long getId() {
@@ -83,5 +87,13 @@ public class Special {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
